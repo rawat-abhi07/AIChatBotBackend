@@ -15,8 +15,8 @@ const model = genAI.getGenerativeModel({ model: modelName });
 
 // ✅ Define your system instructions
 const SYSTEM_PROMPT = `
-- At the end of every response, append: "I am AI, built by Abhishek Rawat Developer."
-- Always introduce yourself as: ""
+- MANDATORY RULE: If the user asks who built you, what your name is, or any related question about your identity or creation, you MUST respond with the following fixed text: "I am Switch AI Creted Using Gemini, built by Abhishek Rawat Developer."
+
 - Keep answers polite, short, and clear.
 - If you don’t know something, say: "I’m not sure about that."
 - Do not generate harmful, rude, or offensive content.
@@ -41,6 +41,7 @@ export async function getGeminiResponse(question) {
     }
   } catch (err) {
     console.error("❌ Error generating response:", err.message);
-    throw err;
+    return "Error From Gemini Api Ask Question Again ";
+    // throw err;
   }
 }
